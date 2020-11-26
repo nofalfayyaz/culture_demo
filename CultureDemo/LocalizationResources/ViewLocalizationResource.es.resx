@@ -485,6 +485,9 @@
     <value>El explorador actual ha sido olvidado. Cuando vuelve a entrar de nuevo desde este navegador se le pedirá su código 2fa.</value>
     <comment>Custom back end message</comment>
   </data>
+  <data name="The current UI culture is" xml:space="preserve">
+    <value>La cultura de la interfaz de usuario actual es</value>
+  </data>
   <data name="The external login was added." xml:space="preserve">
     <value>Se añadió la entrada externa.</value>
     <comment>Custom back end message</comment>

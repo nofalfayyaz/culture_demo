@@ -10,6 +10,7 @@ using LazZiya.ExpressLocalization;
 using LazZiya.TagHelpers.Alerts;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Http;
+using System.Threading;
 
 namespace CultureDemo.Controllers
 {
@@ -19,6 +20,7 @@ namespace CultureDemo.Controllers
         
         // To localize backend strings inject SahredCultureLocalizer
         private readonly ISharedCultureLocalizer _loc;
+        
 
         public HomeController(ILogger<HomeController> logger, ISharedCultureLocalizer loc)
         {
@@ -26,23 +28,17 @@ namespace CultureDemo.Controllers
             _loc = loc;
         }
 
-        public IActionResult Index()
-        {
+        public IActionResult ActionOne()
+        {  
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult ActionTwo()
         {
-            // This is a sample to show how to localize 
-            // custom messages from the backend.
-            // The texts must be defined in ViewsLocalizationResource.xx.resx
+          
             var msg = _loc.GetLocalizedString("Privacy Policy");
-            
-            // Use AlertTagHelper to show messages
-            // Available options : .Success .Warning .Danger .Info .Dark .Light .Primary .Secondary
-            // For more details visit: http://demo.ziyad.info/alert
             TempData.Warning(msg);
-
+            
             return View();
         }
 
@@ -54,11 +50,32 @@ namespace CultureDemo.Controllers
         
         public IActionResult OnGetSetCultureCookie(string cltr, string returnUrl)
         {
-            Response.Cookies.Append(
+
+            
+
+            if (string.IsNullOrWhiteSpace(cltr))
+            {
+                string exisitingCookie = Request.Cookies[".AspNetCore.Culture"];
+             
+                if (!string.IsNullOrWhiteSpace(exisitingCookie))
+                {
+                    var cookieParsedValue = CookieRequestCultureProvider.ParseCookieValue(exisitingCookie);
+                    Response.Cookies.Append(
+                       CookieRequestCultureProvider.DefaultCookieName,
+                       CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(cookieParsedValue.UICultures[0].Value)),
+                       new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
+                       );
+                }
+               
+            }
+            else
+            {
+                Response.Cookies.Append(
                 CookieRequestCultureProvider.DefaultCookieName,
                 CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(cltr)),
                 new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
                 );
+            }
 
             return LocalRedirect(returnUrl);
         }

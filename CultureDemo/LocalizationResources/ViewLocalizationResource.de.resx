@@ -485,6 +485,9 @@
     <value>Der aktuelle Browser vergessen wurde. Wenn Sie sich wieder anmelden von diesem Browser werden Sie für Ihre 2fa Code gefragt.</value>
     <comment>Custom back end message</comment>
   </data>
+  <data name="The current UI culture is" xml:space="preserve">
+    <value>Die aktuelle UI-Kultur ist</value>
+  </data>
   <data name="The external login was added." xml:space="preserve">
     <value>Die externe Login wurde hinzugefügt.</value>
     <comment>Custom back end message</comment>

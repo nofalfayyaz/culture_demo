@@ -473,6 +473,9 @@
     <value>Configuration app authentificateur</value>
     <comment>Areas/Identity/Pages/Account/Manage/TwoFactorAuthentication.cshtml</comment>
   </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+  </data>
   <data name="Submit" xml:space="preserve">
     <value>Soumettre</value>
     <comment>Areas/Identity/Pages/Account/ForgotPassword.cshtml</comment>
@@ -484,6 +487,9 @@
   <data name="The current browser has been forgotten. When you login again from this browser you will be prompted for your 2fa code." xml:space="preserve">
     <value>Le navigateur actuel a été oublié. Lorsque vous vous connectez à nouveau de ce navigateur, vous serez invité à entrer votre code 2fa.</value>
     <comment>Custom back end message</comment>
+  </data>
+  <data name="The current UI culture is" xml:space="preserve">
+    <value>La culture actuelle de l'interface utilisateur est</value>
   </data>
   <data name="The external login was added." xml:space="preserve">
     <value>La connexion externe a été ajouté.</value>
